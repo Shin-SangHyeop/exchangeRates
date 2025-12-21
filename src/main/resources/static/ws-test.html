@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>WS TEST</h2>
+
+<button onclick="connect()">Connect</button>
+<div id="log"></div>
+
+<script>
+    let socket;
+
+    function connect() {
+        socket = new WebSocket("ws://localhost:8080/ws/rates");
+
+        socket.onopen = () => console.log("connected!");
+
+        socket.onmessage = (e) => {
+            document.getElementById("log").innerHTML += `<p>${e.data}</p>`;
+        };
+    }
+</script>
+</body>
+</html>
