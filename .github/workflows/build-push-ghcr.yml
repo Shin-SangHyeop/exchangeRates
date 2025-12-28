@@ -53,7 +53,7 @@ jobs:
       - name: Update Kustomize Image Tag
         run: |
           cd gitops
-          FILE="apps/myapp/overlays/dev/kustomization.yaml"
+          FILE="apps/myapp/base/overlays/dev/kustomization.yaml"
           SHA="${GITHUB_SHA}"
 
           sed -i "s/^    newTag: .*/    newTag: ${SHA}/" "$FILE"
