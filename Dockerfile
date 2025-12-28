@@ -6,7 +6,7 @@ WORKDIR /app
 COPY gradlew .
 COPY gradle gradle
 COPY build.gradle* settings.gradle* gradle.properties* ./
-RUN chmod +x gradlew
+RUN sed -i 's/\r$//' gradlew && chmod +x gradlew
 
 # 나머지 소스 복사
 COPY . .
