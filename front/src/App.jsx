@@ -20,18 +20,7 @@ const App = () => {
     ws.current = new WebSocket("ws://localhost:8080/ws/rates");
 
     ws.current.onopen = () => {
-      console.log("WebSocket Connected");
-
-      // 최초 1회 요청
-      ws.current.send("REQUEST_RATES");
-
-      // 60초마다 서버에 "REQUEST_RATES" 메시지 보내기
-      intervalRef.current = setInterval(() => {
-        if (ws.current.readyState === WebSocket.OPEN) {
-          console.log("⏱ 5초 경과 → 서버에 환율 요청");
-          ws.current.send("REQUEST_RATES");
-        }
-      }, 5000);
+      console.log("====WebSocket 연결, 환율 API 요청 ====")
     };
 
     ws.current.onmessage = (event) => {

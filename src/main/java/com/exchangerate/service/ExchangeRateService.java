@@ -26,7 +26,7 @@ public class ExchangeRateService {
                     filtered.put("JPY", rates.get("JPY"));
                     filtered.put("EUR", rates.get("EUR"));
                     return filtered;
-                });
+                }).cache(Duration.ofSeconds(4)); //4초 동안은 새로 호출하지 않고 저장된 값 반환 (서비스 이용자가 100명이 동시에 호출 시 한번만 API 호출 후 기존 값 사용)
     }
 
 
